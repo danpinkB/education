@@ -4,10 +4,7 @@ package src;
 
 import org.junit.Assert;
 import org.junit.Test;
-import src.stack.CarFleet;
-import src.stack.DailyTemperatures;
-import src.stack.EvaluateReversePolishNotation;
-import src.stack.GenerateParentheses;
+import src.stack.*;
 
 import java.util.Arrays;
 
@@ -37,5 +34,11 @@ public class StackTests {
         CarFleet fleet = new CarFleet();
         Assert.assertEquals(fleet.carFleet(12, new int[]{10,8,0,5,3},new int[]{2,4,1,1,3}),3);
         Assert.assertEquals(fleet.carFleet(10, new int[]{6,8},new int[]{3,2}),2);
+    }
+
+    @Test
+    public void largestReqTest(){
+        LargestReq largestReq = new LargestReq();
+        Assert.assertEquals(largestReq.largestRectangleArea(new int[]{2,1,5,6,2,3}),10);
     }
 }
