@@ -1,33 +1,26 @@
 package src.stack;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 public class LargestReq {
     public int largestRectangleArea(int[] heights) {
         if (heights.length==1)return heights[0];
+        int N = heights.length;
         int maxRange = 0;
-        Stack<Integer> rectangles = new Stack<>();
-        int counter;
-        int min = Integer.MAX_VALUE;
-        for (int i=0; i<heights.length;i++){
-            int height = heights[i];
-            counter = 0;
-            min = Integer.MAX_VALUE;
-            while (!rectangles.isEmpty()&&rectangles.peek()>height){
-                counter++;
-                min = Math.min(rectangles.pop(),min);
-                maxRange = Math.max(maxRange,min*counter);
-            }
-            while (counter-->0)
-                rectangles.push(min);
-            rectangles.push(height);
+        int[] stack = new int[N];
+        Arrays.fill(stack,-1);
+        int pointer = -1;
+        int counter=0;
+        for (int i=0; i<N;i++) {
+            counter=0;
+            while (pointer>-1 && stack[pointer] > heights[i]) maxRange = Math.max(maxRange,++counter*stack[pointer--]);
+            while (counter-->=0) stack[++pointer]=heights[i];
         }
-        counter = 0;
-        while (!rectangles.isEmpty()){
-            min = Math.min(min,rectangles.pop());
-            counter++;
-            maxRange = Math.max(min*counter,maxRange);
-        }
+        counter=0;
+        while (pointer>=0){
+            maxRange = Math.max(maxRange, ++counter*stack[pointer--]);
+        };
         return maxRange;
     }
 }
