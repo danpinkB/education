@@ -37,13 +37,18 @@ public class StackTests {
     }
 
     @Test
-    public void largestReqTest(){
+    public void largestReqTest() {
         LargestReq largestReq = new LargestReq();
-        Assert.assertEquals(10, largestReq.largestRectangleArea(new int[]{2,1,5,6,2,3}));
-        Assert.assertEquals(4,largestReq.largestRectangleArea(new int[]{2,4}));
+        Assert.assertEquals(10, largestReq.largestRectangleArea(new int[]{2, 1, 5, 6, 2, 3}));
+        Assert.assertEquals(4, largestReq.largestRectangleArea(new int[]{2, 4}));
 
-        Assert.assertEquals(3,largestReq.largestRectangleArea(new int[]{2,1,2}));
+        Assert.assertEquals(3, largestReq.largestRectangleArea(new int[]{2, 1, 2}));
 
-        Assert.assertEquals(8,largestReq.largestRectangleArea(new int[]{5,4,1,2}));
+        Assert.assertEquals(8, largestReq.largestRectangleArea(new int[]{5, 4, 1, 2}));
+    }
+    @Test
+    public void maxRectangle(){
+        MaxRectangle rectangle = new MaxRectangle();
+        System.out.println(rectangle.largestRectangleArea(new int[]{2,1,5,6,2,3}));
     }
 }
